@@ -7,13 +7,13 @@ function generatePageHTML(title, price, description, highlights, images, options
     
     images.forEach((img, idx) => {
         const opc = idx === 0 ? 'opacity-100' : 'opacity-0';
-        imagesHtml += '<img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ' + opc + '" src="' + img + '" alt="">\\n';
+        imagesHtml += '<img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ' + opc + '" src="' + img + '" alt="">';
         
         const dotOpc = idx === 0 ? 'opacity-100' : 'opacity-50';
-        navHtml += '<div class="w-2 h-2 rounded-full bg-surface transition-opacity ' + dotOpc + '"></div>\\n';
+        navHtml += '<div class="w-2 h-2 rounded-full bg-surface transition-opacity ' + dotOpc + '"></div>';
         
         const border = idx === 0 ? 'border-primary' : 'border-transparent hover:border-primary/50';
-        thumbHtml += '<button onclick="goToSlide(' + idx + ')" class="aspect-[4/5] rounded-lg overflow-hidden border-2 focus:outline-none ' + border + '"><img class="w-full h-full object-cover" src="' + img + '"></button>\\n';
+        thumbHtml += '<button onclick="goToSlide(' + idx + ')" class="aspect-[4/5] w-full rounded-lg overflow-hidden border-2 focus:outline-none ' + border + '"><img class="w-full h-full object-cover" src="' + img + '"></button>';
     });
 
     return `<!DOCTYPE html>
@@ -68,6 +68,12 @@ function generatePageHTML(title, price, description, highlights, images, options
             background-image: none !important;
             filter: url(#noiseFilter);
             opacity: 0.15;
+        }
+        .carousel-img {
+            pointer-events: none;
+        }
+        .carousel-img.opacity-100 {
+            pointer-events: auto;
         }
     </style>
 
@@ -146,7 +152,7 @@ function generatePageHTML(title, price, description, highlights, images, options
                         ` + description + `
                     </p>
                     <ul class="text-sm font-body text-on-surface-variant opacity-80 list-disc list-inside space-y-2 pt-4">
-                        ` + highlights.map(h => '<li>' + h + '</li>').join('\\n                        ') + `
+                        ` + highlights.map(h => '<li>' + h + '</li>').join('') + `
                     </ul>
                 </div>
 
@@ -265,4 +271,4 @@ fs.writeFileSync('product-tapestry.html', generatePageHTML(
     tapestryImgs, tapestryOptions, 'Mixed Fiber Art'
 ));
 
-console.log('Successfully regenerated product pages with proper syntax!');
+console.log("Pages fixed and regenerated.");
