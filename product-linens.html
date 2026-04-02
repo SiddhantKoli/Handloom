@@ -54,7 +54,7 @@
     </style>
 
     <!-- TopNavBar -->
-    <nav class="fixed top-0 w-full z-50 bg-[#fbf9f5]/90 backdrop-blur-md transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) border-b border-outline/5">
+    <nav class="fixed top-0 w-full z-50 bg-[#fbf9f5]/90 backdrop-blur-md transition-all duration-500 border-b border-outline/5">
         <div class="flex justify-between items-center w-full px-12 py-6 max-w-screen-2xl mx-auto">
             <a href="/index.html" class="text-2xl font-bold tracking-tighter text-primary uppercase font-serif italic hover:opacity-80 transition-opacity">
                 THE DIGITAL LOOM
@@ -67,7 +67,7 @@
                 <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="/index.html#journal">Journal</a>
             </div>
             <div class="flex items-center gap-6">
-                <button onclick="showToast('Your shopping bag is currently empty.')" class="text-primary hover:scale-110 active:scale-95 transition-transform duration-200 cursor-pointer">
+                <button onclick="toggleCart()" class="text-primary hover:scale-110 active:scale-95 transition-transform duration-200 cursor-pointer">
                     <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
                 </button>
             </div>
@@ -86,23 +86,30 @@
 
         <!-- Product Layout -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start relative">
-            <!-- Left: Image Gallery -->
-            <div class="md:col-span-7 flex flex-col gap-6">
-                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                    <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2eJgJ11h1TWezGfXo0Yk3A6lyd09Xp57sD3i-j2Tq9F_F_E5h_1b-5v2T3090Fk_Iu1b203aQOqN8D_w0b_aR737gK0A5L1nZ3lXqY9X0LwI0q8xG_B2zZ70Jq2YV_F31y_I3aJ6R9Ym3GvZ9z4n4_wR7qO0-v7_X_M5yXZ4O00R80p-aE6m8N1_Yx_o-V7qN" alt="Main Product">
-                </div>
-                <!-- Editorial Model Shots -->
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="/linens_lifestyle.png" alt="Beautifully set dining table">
+            
+            <!-- Left: Image Carousel -->
+            <div class="md:col-span-7 relative group" id="product-carousel">
+                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-sm relative">
+                    <!-- Images -->
+                    <img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="https://images.unsplash.com/photo-1596431969426-5ab9475ab5ec?q=80&w=1200&auto=format&fit=crop" alt="">\n<img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=1200&auto=format&fit=crop" alt="">\n<img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="/linens_detail.png" alt="">\n
+                    
+                    <!-- Navigation Arrows -->
+                    <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-surface/80 p-3 rounded-full text-on-surface shadow-lg hover:bg-surface transition-colors backdrop-blur-sm opacity-0 group-hover:opacity-100 duration-300 z-10 focus:outline-none">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-surface/80 p-3 rounded-full text-on-surface shadow-lg hover:bg-surface transition-colors backdrop-blur-sm opacity-0 group-hover:opacity-100 duration-300 z-10 focus:outline-none">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    
+                    <!-- Indicators -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10" id="carousel-indicators">
+                        <div class="w-2 h-2 rounded-full bg-surface transition-opacity opacity-100"></div>\n<div class="w-2 h-2 rounded-full bg-surface transition-opacity opacity-50"></div>\n<div class="w-2 h-2 rounded-full bg-surface transition-opacity opacity-50"></div>\n
                     </div>
-                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="/linens_detail.png" alt="Close up of natural linen fabric">
-                    </div>
                 </div>
-                <!-- Lifestyle Hero Shot -->
-                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                    <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="/linens_lifestyle.png" alt="Rustic ceramics and linens">
+                
+                <!-- Thumbnails -->
+                <div class="grid grid-cols-3 gap-4 mt-4">
+                    <button onclick="goToSlide(0)" class="aspect-[4/5] rounded-lg overflow-hidden border-2 focus:outline-none border-primary"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1596431969426-5ab9475ab5ec?q=80&w=1200&auto=format&fit=crop"></button>\n<button onclick="goToSlide(1)" class="aspect-[4/5] rounded-lg overflow-hidden border-2 focus:outline-none border-transparent hover:border-primary/50"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=1200&auto=format&fit=crop"></button>\n<button onclick="goToSlide(2)" class="aspect-[4/5] rounded-lg overflow-hidden border-2 focus:outline-none border-transparent hover:border-primary/50"><img class="w-full h-full object-cover" src="/linens_detail.png"></button>\n
                 </div>
             </div>
 
@@ -118,29 +125,28 @@
 
                 <div class="space-y-4">
                     <p class="text-on-surface-variant leading-relaxed font-body">
-                        Designed to be a companion for crisp mornings and slow weekends. Dining Linens Set is hand-knitted by our master artisans using un-dyed, wild Icelandic wool. Each piece takes approximately 24 hours to craft, featuring our signature textured honeycomb stitch that gracefully traps warmth while remaining light on the shoulders.
+                        Elevate your everyday dining with our organic linen set. Woven on traditional wooden looms in our coastal studio, these naturally dyed flax linens grow softer with every wash. The beautiful raw fringed edges add a touch of rustic elegance to any table setting.
                     </p>
                     <ul class="text-sm font-body text-on-surface-variant opacity-80 list-disc list-inside space-y-2 pt-4">
-                        <li>100% Organic European Flax</li>
-                        <li>Woven on heritage wooden looms</li>
-                        <li>Set of 4 large dinner napkins</li>
-                        <li>Natural frayed edge finishing</li>
+                        <li>100% Organic European Flax</li>\n                        <li>Woven on heritage wooden looms</li>\n                        <li>Set of 4 large dinner napkins</li>\n                        <li>Natural frayed edge finishing</li>
                     </ul>
                 </div>
 
-                <div class="space-y-4 pt-4">
-                    <div class="flex justify-between items-center text-sm font-label uppercase tracking-widest text-on-surface-variant mb-2">
-                        <span>Select Color</span>
-                    </div>
-                    <div class="grid grid-cols-3 gap-3">
-                        <button onclick="this.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('ring-2', 'ring-primary')); this.classList.add('ring-2', 'ring-primary')" class="border border-outline/30 rounded py-3 font-body hover:border-primary transition-colors focus:outline-none ring-2 ring-primary">Sage Green</button>
-                        <button onclick="this.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('ring-2', 'ring-primary')); this.classList.add('ring-2', 'ring-primary')" class="border border-outline/30 rounded py-3 font-body hover:border-primary transition-colors focus:outline-none">Oatmeal</button>
-                        <button onclick="this.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('ring-2', 'ring-primary')); this.classList.add('ring-2', 'ring-primary')" class="border border-outline/30 rounded py-3 font-body hover:border-primary transition-colors focus:outline-none">Charcoal</button>
-                    </div>
-                </div>
+                
+<div class="space-y-4 pt-4">
+    <div class="flex justify-between items-center text-sm font-label uppercase tracking-widest text-on-surface-variant mb-2">
+        <span>Select Color</span>
+    </div>
+    <div class="grid grid-cols-3 gap-3">
+        <button onclick="this.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('ring-2', 'ring-primary')); this.classList.add('ring-2', 'ring-primary'); goToSlide(1);" class="border border-outline/30 rounded py-3 font-body hover:border-primary transition-colors focus:outline-none ring-2 ring-primary">Sage Green</button>
+        <button onclick="this.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('ring-2', 'ring-primary')); this.classList.add('ring-2', 'ring-primary'); goToSlide(0);" class="border border-outline/30 rounded py-3 font-body hover:border-primary transition-colors focus:outline-none">Oatmeal</button>
+        <button onclick="this.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('ring-2', 'ring-primary')); this.classList.add('ring-2', 'ring-primary'); goToSlide(2);" class="border border-outline/30 rounded py-3 font-body hover:border-primary transition-colors focus:outline-none">Charcoal</button>
+    </div>
+</div>
+
 
                 <div class="pt-4">
-                    <button onclick="showToast('Dining Linens Set added to your bag!')" class="w-full bg-primary text-on-primary py-5 rounded-lg font-label uppercase tracking-widest text-sm hover:bg-primary-container active:scale-[0.98] transition-all shadow-xl shadow-primary/10">
+                    <button onclick="showToast('Dining Linens Set added to bag!')" class="w-full bg-primary text-on-primary py-5 rounded-lg font-label uppercase tracking-widest text-sm hover:bg-primary-container active:scale-[0.98] transition-all shadow-xl shadow-primary/10">
                         Add to Bag — $145
                     </button>
                     <p class="text-center text-xs text-on-surface-variant font-label uppercase tracking-widest mt-4 opacity-50">Free shipping on global orders</p>

@@ -54,7 +54,7 @@
     </style>
 
     <!-- TopNavBar -->
-    <nav class="fixed top-0 w-full z-50 bg-[#fbf9f5]/90 backdrop-blur-md transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) border-b border-outline/5">
+    <nav class="fixed top-0 w-full z-50 bg-[#fbf9f5]/90 backdrop-blur-md transition-all duration-500 border-b border-outline/5">
         <div class="flex justify-between items-center w-full px-12 py-6 max-w-screen-2xl mx-auto">
             <a href="/index.html" class="text-2xl font-bold tracking-tighter text-primary uppercase font-serif italic hover:opacity-80 transition-opacity">
                 THE DIGITAL LOOM
@@ -67,7 +67,7 @@
                 <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="/index.html#journal">Journal</a>
             </div>
             <div class="flex items-center gap-6">
-                <button onclick="showToast('Your shopping bag is currently empty.')" class="text-primary hover:scale-110 active:scale-95 transition-transform duration-200 cursor-pointer">
+                <button onclick="toggleCart()" class="text-primary hover:scale-110 active:scale-95 transition-transform duration-200 cursor-pointer">
                     <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
                 </button>
             </div>
@@ -86,23 +86,30 @@
 
         <!-- Product Layout -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start relative">
-            <!-- Left: Image Gallery -->
-            <div class="md:col-span-7 flex flex-col gap-6">
-                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                    <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC20_gB5mG1v79_03BhUu6z9bVlMvWJ6T941KqJp1kX2G17wD8Hj02xL714f36cM4yZ57aZ2pB5Wj5G8uL5Hl62g6Z574_n2kYfC9Yl35P7U70XwLzG7_gP90d40X8G10vF7Yh0fTbJc_e-4HnZ9sA114_Nq2zV_iK1Q18H-7vUe2o0OqTqVq_gO5X-pX0jM8B9gXkXv3XF9H-kY8d3-i4_C5aX_G_kY9j4L3h-7T" alt="Main Product">
-                </div>
-                <!-- Editorial Model Shots -->
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="/tapestry_detail.png" alt="Full view of the wall tapestry hanging">
+            
+            <!-- Left: Image Carousel -->
+            <div class="md:col-span-7 relative group" id="product-carousel">
+                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-sm relative">
+                    <!-- Images -->
+                    <img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop" alt="">\n<img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="/tapestry_detail.png" alt="">\n<img class="carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop" alt="">\n
+                    
+                    <!-- Navigation Arrows -->
+                    <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-surface/80 p-3 rounded-full text-on-surface shadow-lg hover:bg-surface transition-colors backdrop-blur-sm opacity-0 group-hover:opacity-100 duration-300 z-10 focus:outline-none">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-surface/80 p-3 rounded-full text-on-surface shadow-lg hover:bg-surface transition-colors backdrop-blur-sm opacity-0 group-hover:opacity-100 duration-300 z-10 focus:outline-none">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    
+                    <!-- Indicators -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10" id="carousel-indicators">
+                        <div class="w-2 h-2 rounded-full bg-surface transition-opacity opacity-100"></div>\n<div class="w-2 h-2 rounded-full bg-surface transition-opacity opacity-50"></div>\n<div class="w-2 h-2 rounded-full bg-surface transition-opacity opacity-50"></div>\n
                     </div>
-                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="/tapestry_detail.png" alt="Close up shot of the thick wool yarns">
-                    </div>
                 </div>
-                <!-- Lifestyle Hero Shot -->
-                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-sm group">
-                    <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="/tapestry_detail.png" alt="Tapestry in a styled artisan interior">
+                
+                <!-- Thumbnails -->
+                <div class="grid grid-cols-3 gap-4 mt-4">
+                    <button onclick="goToSlide(0)" class="aspect-[4/5] rounded-lg overflow-hidden border-2 focus:outline-none border-primary"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop"></button>\n<button onclick="goToSlide(1)" class="aspect-[4/5] rounded-lg overflow-hidden border-2 focus:outline-none border-transparent hover:border-primary/50"><img class="w-full h-full object-cover" src="/tapestry_detail.png"></button>\n<button onclick="goToSlide(2)" class="aspect-[4/5] rounded-lg overflow-hidden border-2 focus:outline-none border-transparent hover:border-primary/50"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop"></button>\n
                 </div>
             </div>
 
@@ -118,21 +125,17 @@
 
                 <div class="space-y-4">
                     <p class="text-on-surface-variant leading-relaxed font-body">
-                        Designed to be a companion for crisp mornings and slow weekends. Basalt Wall Tapestry is hand-knitted by our master artisans using un-dyed, wild Icelandic wool. Each piece takes approximately 24 hours to craft, featuring our signature textured honeycomb stitch that gracefully traps warmth while remaining light on the shoulders.
+                        A bold statement piece for the modern interior. The Basalt Wall Tapestry explores the intersection of raw nature and contemporary design. Completely hand-woven over three weeks, it combines chunky un-dyed wool with stark, basalt-toned accents to create deep, shadow-catching texture on your wall.
                     </p>
                     <ul class="text-sm font-body text-on-surface-variant opacity-80 list-disc list-inside space-y-2 pt-4">
-                        <li>Sustainably sourced wool, cotton, and jute</li>
-                        <li>Hand-woven abstract composition</li>
-                        <li>Dimensions: 3ft wide x 4.5ft tall</li>
-                        <li>Includes hand-carved walnut hanging beam</li>
+                        <li>Sustainably sourced wool, cotton, and jute</li>\n                        <li>Hand-woven abstract composition</li>\n                        <li>Dimensions: 3ft wide x 4.5ft tall</li>\n                        <li>Includes hand-carved walnut hanging beam</li>
                     </ul>
                 </div>
 
                 
-                </div>
 
                 <div class="pt-4">
-                    <button onclick="showToast('Basalt Wall Tapestry added to your bag!')" class="w-full bg-primary text-on-primary py-5 rounded-lg font-label uppercase tracking-widest text-sm hover:bg-primary-container active:scale-[0.98] transition-all shadow-xl shadow-primary/10">
+                    <button onclick="showToast('Basalt Wall Tapestry added to bag!')" class="w-full bg-primary text-on-primary py-5 rounded-lg font-label uppercase tracking-widest text-sm hover:bg-primary-container active:scale-[0.98] transition-all shadow-xl shadow-primary/10">
                         Add to Bag — $420
                     </button>
                     <p class="text-center text-xs text-on-surface-variant font-label uppercase tracking-widest mt-4 opacity-50">Free shipping on global orders</p>
