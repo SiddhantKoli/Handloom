@@ -243,3 +243,39 @@ window.subscribeNewsletter = function() {
         showToast('Please enter a valid email address.');
     }
 }
+
+// --- IMAGE CAROUSEL LOGIC ---
+window.currentSlide = 0;
+
+window.goToSlide = function(idx) {
+    const images = document.querySelectorAll('.carousel-img');
+    const dots = document.getElementById('carousel-indicators')?.children;
+    const thumbs = document.querySelectorAll('#product-carousel .grid button');
+    
+    if (!images || images.length === 0) return;
+    
+    // Convert to valid index
+    let newSlide = idx % images.length;
+    if (newSlide < 0) newSlide += images.length;
+    
+    // Hide current
+    if (images[window.currentSlide]) {
+        images[window.currentSlide].classList.replace('opacity-100', 'opacity-0');
+        if (dots && dots[window.currentSlide]) dots[window.currentSlide].classList.replace('opacity-100', 'opacity-50');
+        if (thumbs && thumbs[window.currentSlide]) thumbs[window.currentSlide].classList.replace('border-primary', 'border-transparent');
+    }
+    
+    // Show new
+    window.currentSlide = newSlide;
+    if (images[window.currentSlide]) {
+        images[window.currentSlide].classList.replace('opacity-0', 'opacity-100');
+        if (dots && dots[window.currentSlide]) dots[window.currentSlide].classList.replace('opacity-50', 'opacity-100');
+        if (thumbs && thumbs[window.currentSlide]) {
+            thumbs[window.currentSlide].classList.remove('border-transparent');
+            thumbs[window.currentSlide].classList.add('border-primary');
+        }
+    }
+}
+
+window.nextSlide = function() { window.goToSlide(window.currentSlide + 1); }
+window.prevSlide = function() { window.goToSlide(window.currentSlide - 1); }
