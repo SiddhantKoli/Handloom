@@ -80,15 +80,15 @@ function generatePageHTML(title, price, description, highlights, images, options
     <!-- TopNavBar -->
     <nav class="fixed top-0 w-full z-50 bg-[#fbf9f5]/90 backdrop-blur-md transition-all duration-500 border-b border-outline/5">
         <div class="flex justify-between items-center w-full px-12 py-6 max-w-screen-2xl mx-auto">
-            <a href="/index.html" class="text-2xl font-bold tracking-tighter text-primary uppercase font-serif italic hover:opacity-80 transition-opacity">
+            <a href="./index.html" class="text-2xl font-bold tracking-tighter text-primary uppercase font-serif italic hover:opacity-80 transition-opacity">
                 THE DIGITAL LOOM
             </a>
             <div class="hidden md:flex items-center gap-12">
-                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="/index.html#collections">Collections</a>
-                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="/index.html#craft">The Craft</a>
-                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="/index.html#archive">Archive</a>
-                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="/index.html#studio">Studio</a>
-                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="/index.html#journal">Journal</a>
+                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="./index.html#collections">Collections</a>
+                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="./index.html#craft">The Craft</a>
+                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="./index.html#archive">Archive</a>
+                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="./index.html#studio">Studio</a>
+                <a class="text-[#53433e] opacity-80 hover:opacity-100 hover:text-primary transition-opacity duration-300 font-serif italic tracking-tight" href="./index.html#journal">Journal</a>
             </div>
             <div class="flex items-center gap-6">
                 <button onclick="toggleCart()" class="text-primary hover:scale-110 active:scale-95 transition-transform duration-200 cursor-pointer">
@@ -101,9 +101,9 @@ function generatePageHTML(title, price, description, highlights, images, options
     <main class="pt-32 max-w-screen-2xl mx-auto px-6 md:px-12 mb-40">
         <!-- Breadcrumb -->
         <div class="py-4 mb-8 text-sm font-body text-on-surface-variant flex items-center gap-2">
-            <a href="/index.html" class="hover:text-primary transition-colors">Home</a>
+            <a href="./index.html" class="hover:text-primary transition-colors">Home</a>
             <span>/</span>
-            <a href="/index.html#collections" class="hover:text-primary transition-colors">Collections</a>
+            <a href="./index.html#collections" class="hover:text-primary transition-colors">Collections</a>
             <span>/</span>
             <span class="text-primary italic">` + title + `</span>
         </div>
@@ -205,8 +205,8 @@ function generatePageHTML(title, price, description, highlights, images, options
 // Data for Heirloom Cardigan
 const cardiganImgs = [
     'https://lh3.googleusercontent.com/aida-public/AB6AXuAOVLbhFpJa5S4QFXiD83ycHu_Q0Gn4TgQ3256LWSFFK7Apivjr9Hnf3Ss1197ItUOQ94nq9cwi80cgdSkJgVToAyzgNQII7IK5wuPmDR7OT0OU-4tAwI1sFCyMcnoE3ZqHidvZbbcAYecbGOgezXwPo7H4kRfeYaGtUel4lSiqNrHtl0SnTWCT9qQCLjZhLcGSQoXmjjLxkyNVUNwSo4rf5SCnuLe64yOZmbcyR3TQm_rsPQpn2-2fyUhgkYfYzJvyFmVDaGOXvOMW',
-    '/model1.png',
-    '/detail.png'
+    './model1.png',
+    './detail.png'
 ];
 const cardiganOptions = `
 <div class="space-y-4 pt-4">
@@ -227,7 +227,7 @@ const cardiganOptions = `
 const linensImgs = [
     'https://images.unsplash.com/photo-1596431969426-5ab9475ab5ec?q=80&w=1200&auto=format&fit=crop', 
     'https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=1200&auto=format&fit=crop', 
-    '/linens_detail.png' 
+    './linens_detail.png' 
 ];
 const linensOptions = `
 <div class="space-y-4 pt-4">
@@ -244,8 +244,8 @@ const linensOptions = `
 
 // Data for Tapestry
 const tapestryImgs = [
+    './tapestry_detail.png',
     'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop', 
-    '/tapestry_detail.png',
     'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop'  
 ];
 const tapestryOptions = ``;
@@ -271,4 +271,4 @@ fs.writeFileSync('product-tapestry.html', generatePageHTML(
     tapestryImgs, tapestryOptions, 'Mixed Fiber Art'
 ));
 
-console.log("Pages fixed and regenerated.");
+console.log("Assets and path logic fixed.");
