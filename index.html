@@ -155,23 +155,24 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
                 <!-- Product Card 1 -->
-                <div class="space-y-6 pt-12 group">
-                    <div class="relative aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden">
+                <div class="space-y-6 pt-12 group relative">
+                    <a href="/product.html" class="absolute inset-0 z-10 hidden md:block"></a>
+                    <div class="relative aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden block">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="artisanal hand-knit sage green sweater draped over a wooden chair in a sunlit rustic cottage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOVLbhFpJa5S4QFXiD83ycHu_Q0Gn4TgQ3256LWSFFK7Apivjr9Hnf3Ss1197ItUOQ94nq9cwi80cgdSkJgVToAyzgNQII7IK5wuPmDR7OT0OU-4tAwI1sFCyMcnoE3ZqHidvZbbcAYecbGOgezXwPo7H4kRfeYaGtUel4lSiqNrHtl0SnTWCT9qQCLjZhLcGSQoXmjjLxkyNVUNwSo4rf5SCnuLe64yOZmbcyR3TQm_rsPQpn2-2fyUhgkYfYzJvyFmVDaGOXvOMW"/>
                         <div class="absolute top-4 left-4 bg-tertiary-container/90 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-label tracking-widest uppercase flex items-center gap-2 backdrop-blur-sm">
                             <span class="material-symbols-outlined text-[12px]" data-icon="edit">edit</span> Hand-Stitched
                         </div>
-                        <button onclick="showToast('The Heirloom Cardigan added to bag!')" class="absolute bottom-4 right-4 bg-primary text-on-primary p-2 flex items-center justify-center rounded-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg"><span class="material-symbols-outlined text-[18px]">add_shopping_cart</span></button>
+                        <button onclick="event.preventDefault(); event.stopPropagation(); showToast('The Heirloom Cardigan added to bag!')" class="absolute z-20 bottom-4 right-4 bg-primary text-on-primary p-2 flex items-center justify-center rounded-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg"><span class="material-symbols-outlined text-[18px]">add_shopping_cart</span></button>
                     </div>
-                    <div class="flex justify-between items-start px-2">
+                    <a href="/product.html" class="flex justify-between items-start px-2 relative z-20 hover:text-primary transition-colors">
                         <div>
-                            <h3 class="font-headline text-2xl text-on-surface">The Heirloom Cardigan</h3>
+                            <h3 class="font-headline text-2xl">The Heirloom Cardigan</h3>
                             <p class="text-on-surface-variant text-sm italic">Wild Icelandic Wool</p>
                         </div>
                         <div class="bg-surface-container-highest px-3 py-1.5 rounded rotate-3 shadow-sm border border-outline-variant/20">
                             <p class="font-label text-primary font-bold">$280</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <!-- Product Card 2 -->
                 <div class="space-y-6 group">
