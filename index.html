@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>THE DIGITAL LOOM | Handmade Textiles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                colors: {
+                  "surface-container": "#efeeea",
+                  "inverse-on-surface": "#f2f0ed",
+                  "surface-container-low": "#f5f3ef",
+                  "surface-tint": "#8a4f34",
+                  "primary-container": "#a46448",
+                  "surface-bright": "#fbf9f5",
+                  "tertiary-container": "#936a6a",
+                  "on-secondary-container": "#536a59",
+                  "on-secondary": "#ffffff",
+                  "surface-container-lowest": "#ffffff",
+                  "on-error-container": "#93000a",
+                  "tertiary-fixed": "#ffdad9",
+                  "on-error": "#ffffff",
+                  "error-container": "#ffdad6",
+                  "surface-container-high": "#eae8e4",
+                  "secondary-fixed": "#d0e9d4",
+                  "primary": "#874d32",
+                  "surface-container-highest": "#e4e2de",
+                  "surface": "#fbf9f5",
+                  "on-primary-fixed-variant": "#6e381f",
+                  "on-tertiary-fixed": "#2f1314",
+                  "outline-variant": "#d8c2ba",
+                  "inverse-primary": "#ffb596",
+                  "error": "#ba1a1a",
+                  "surface-dim": "#dbdad6",
+                  "secondary-container": "#d0e9d4",
+                  "on-primary-fixed": "#360f00",
+                  "tertiary-fixed-dim": "#ecbbba",
+                  "outline": "#85736c",
+                  "on-surface": "#1b1c1a",
+                  "secondary": "#4d6453",
+                  "secondary-fixed-dim": "#b4cdb9",
+                  "primary-fixed-dim": "#ffb596",
+                  "primary-fixed": "#ffdbcd",
+                  "tertiary": "#785253",
+                  "on-tertiary-fixed-variant": "#603d3e",
+                  "on-background": "#1b1c1a",
+                  "on-surface-variant": "#53433e",
+                  "surface-variant": "#e4e2de",
+                  "on-tertiary": "#ffffff",
+                  "on-secondary-fixed-variant": "#364c3d",
+                  "on-primary": "#ffffff",
+                  "on-secondary-fixed": "#0b2013",
+                  "background": "#fbf9f5",
+                  "inverse-surface": "#30312e",
+                  "on-tertiary-container": "#fffbff",
+                  "on-primary-container": "#fffbff"
+                },
+                fontFamily: {
+                  "headline": ["Newsreader", "serif"],
+                  "body": ["Noto Serif", "serif"],
+                  "label": ["Noto Serif", "serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+              },
+            },
+          }
+    </script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed grain-overlay">
+    <!-- SVG Noise for cleaner grain and NO blocky bands -->
+    <svg style="display: none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+        </filter>
+    </svg>
+    <style>
+        .grain-overlay::before {
+            background-image: none !important;
+            filter: url(#noiseFilter);
+            opacity: 0.15; /* Adjust to taste */
+        }
+    </style>
+
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#fbf9f5]/80 dark:bg-[#1b1c1a]/80 backdrop-blur-md transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)">
+        <div class="flex justify-between items-center w-full px-12 py-6 max-w-screen-2xl mx-auto">
+            <div class="text-2xl font-bold tracking-tighter text-[#874d32] dark:text-[#a46448] uppercase font-serif italic">
+                THE DIGITAL LOOM
+            </div>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="text-[#874d32] dark:text-[#a46448] border-b border-[#874d32]/30 pb-1 font-serif italic tracking-tight" href="#">Collections</a>
+                <a class="text-[#53433e] dark:text-[#d8c2ba] opacity-80 hover:opacity-100 hover:text-[#874d32] transition-opacity duration-300 font-serif italic tracking-tight" href="#">The Craft</a>
+                <a class="text-[#53433e] dark:text-[#d8c2ba] opacity-80 hover:opacity-100 hover:text-[#874d32] transition-opacity duration-300 font-serif italic tracking-tight" href="#">Archive</a>
+                <a class="text-[#53433e] dark:text-[#d8c2ba] opacity-80 hover:opacity-100 hover:text-[#874d32] transition-opacity duration-300 font-serif italic tracking-tight" href="#">Studio</a>
+                <a class="text-[#53433e] dark:text-[#d8c2ba] opacity-80 hover:opacity-100 hover:text-[#874d32] transition-opacity duration-300 font-serif italic tracking-tight" href="#">Journal</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-[#874d32]"><span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32">
+        <!-- Hero Section -->
+        <section class="max-w-screen-2xl mx-auto px-12 mb-40">
+            <div class="grid grid-cols-12 gap-8 items-end">
+                <div class="col-span-12 lg:col-span-7 relative z-20">
+                    <h1 class="font-headline text-8xl md:text-9xl text-primary leading-[0.85] tracking-tighter italic">
+                        Handmade with love,<br/>
+                        <span class="pl-24 inline-block">one stitch at a time</span>
+                    </h1>
+                    <p class="mt-12 max-w-md text-on-surface-variant text-lg font-body leading-relaxed">
+                        A curated archive of textile narratives, woven by hand in our coastal studio. Each piece carries the weight of a legacy and the softness of a memory.
+                    </p>
+                    <div class="mt-8">
+                        <button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label uppercase tracking-widest text-sm hover:bg-primary-container transition-colors shadow-lg shadow-surface-tint/10">
+                            Explore Collections
+                        </button>
+                    </div>
+                </div>
+                <div class="col-span-12 lg:col-span-5 relative">
+                    <div class="aspect-[3/4] overflow-hidden rounded-xl shadow-2xl relative group">
+                        <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="close up of hand woven cream wool blanket with intricate honeycomb pattern and soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBPwWPirWW_b-x0DSA8VnwA7gQXuWpydB0JAFLP3-TzRptyA0kBgVXcitV5I6rgU9_KxhP1G7bLg2h8MkHHEmzG2f3iLlhAffScrfwrTKIOjeskdbLL4vz0-z_Lx1NFT9kHkjr1BAsj3km-zjsFbn3GQOIPdV8yv_5hEoJvbOISHwjBxUirPhv_q0n6SVycLz1KmQKJ3GSLdwHTkJTlLJ3d04NPxNbK80o99venEmGwMWWMZW1wCTsQv-1a2fVxLumThALhdp-Jpb"/>
+                        <div class="absolute inset-0 bg-primary/10 mix-blend-multiply opacity-30"></div>
+                    </div>
+                    <div class="absolute -bottom-12 -left-24 hidden lg:block w-72 h-48 bg-surface-container-low p-6 rounded-lg shadow-xl z-30">
+                        <p class="text-tertiary font-headline italic text-2xl mb-4">Summer Weave 01</p>
+                        <p class="text-on-surface-variant text-sm font-body leading-snug">Hand-dyed indigo linen, sourced sustainably from local farmers in the valley.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stitched Divider -->
+        <div class="max-w-screen-xl mx-auto px-12 py-20">
+            <div class="stitch-line"></div>
+        </div>
+
+        <!-- Masonry Featured Products -->
+        <section class="max-w-screen-2xl mx-auto px-12 mb-40">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <span class="text-secondary font-label uppercase tracking-widest text-xs mb-2 block">Our Heritage Pieces</span>
+                    <h2 class="font-headline text-5xl text-on-surface">The Seasonal Loom</h2>
+                </div>
+                <a class="text-primary font-body italic border-b border-primary/20 pb-1 hover:border-primary transition-all" href="#">View Full Archive</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+                <!-- Product Card 1 -->
+                <div class="space-y-6 pt-12 group">
+                    <div class="relative aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="artisanal hand-knit sage green sweater draped over a wooden chair in a sunlit rustic cottage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOVLbhFpJa5S4QFXiD83ycHu_Q0Gn4TgQ3256LWSFFK7Apivjr9Hnf3Ss1197ItUOQ94nq9cwi80cgdSkJgVToAyzgNQII7IK5wuPmDR7OT0OU-4tAwI1sFCyMcnoE3ZqHidvZbbcAYecbGOgezXwPo7H4kRfeYaGtUel4lSiqNrHtl0SnTWCT9qQCLjZhLcGSQoXmjjLxkyNVUNwSo4rf5SCnuLe64yOZmbcyR3TQm_rsPQpn2-2fyUhgkYfYzJvyFmVDaGOXvOMW"/>
+                        <div class="absolute top-4 left-4 bg-tertiary-container/90 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-label tracking-widest uppercase flex items-center gap-2 backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-[12px]" data-icon="edit">edit</span> Hand-Stitched
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start px-2">
+                        <div>
+                            <h3 class="font-headline text-2xl text-on-surface">The Heirloom Cardigan</h3>
+                            <p class="text-on-surface-variant text-sm italic">Wild Icelandic Wool</p>
+                        </div>
+                        <div class="bg-surface-container-highest px-3 py-1.5 rounded rotate-3 shadow-sm border border-outline-variant/20">
+                            <p class="font-label text-primary font-bold">$280</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="space-y-6 group">
+                    <div class="relative aspect-[1/1] bg-surface-container-low rounded-lg overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="stack of various hand-woven linen napkins in earthy tones of terracotta sage and cream with frayed edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdv5-vhtpPk72k4K8Lz5ni2WGYTgmctbAdLG68BtMtsoc8Bhd03rVBY6BYsmR3LbPFiPA9dkphPE1KWoFJbToe4GH0AW9-6puR4f2ZeY73Fd7R0xz6J56Fe2tO4I0_a6y73Cf7cBf_3svn8vGN0_XHXzQxEn0xR1B-CnxiB-3FimjnXdhxQR8dIDERN5vKBbITCfWUSElFCVWkImvd6yXcNxJipeaYyA37adHpZMK9jAO9u9Uaok_XkCJt5wW5qvoeSeiOkCj8FNEo"/>
+                        <div class="absolute top-4 right-4 bg-secondary-container/90 text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-label tracking-widest uppercase flex items-center gap-2 backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-[12px]" data-icon="eco">eco</span> Sustainable
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start px-2">
+                        <div>
+                            <h3 class="font-headline text-2xl text-on-surface">Dining Linens Set</h3>
+                            <p class="text-on-surface-variant text-sm italic">Organic Belgian Flax</p>
+                        </div>
+                        <div class="bg-surface-container-highest px-3 py-1.5 rounded -rotate-2 shadow-sm border border-outline-variant/20">
+                            <p class="font-label text-primary font-bold">$95</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="space-y-6 pt-24 group">
+                    <div class="relative aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="large textured hand-woven tapestry hanging on a white wall with minimalist abstract thread patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASRBuxPPyw-iIOg1APTePQjafYxpZjR11B4HhyWyrfGYLJHqhoIIlCbdMwtxpSCMLODkpAnw4IjrLOdfnm33O9ZU7vbQvFxAOjPDhmUk_I-GnQ9VcflyzZgK88CSXxGc1YPPRBvVp7MEfW6tifFGGAyfnlFqdrl_WA2KvK6gnECfFQ-T_vc-hWzF_gDmMl7sGmffIl5BTgpNWMSB8gKxxXy-CD4j5KEpJyQ8EYmXVrKKtuEAhKNNWd9MesbCTgZdFNxGHoYxTjmBvB"/>
+                    </div>
+                    <div class="flex justify-between items-start px-2">
+                        <div>
+                            <h3 class="font-headline text-2xl text-on-surface">Basalt Wall Tapestry</h3>
+                            <p class="text-on-surface-variant text-sm italic">Mixed Fiber Art</p>
+                        </div>
+                        <div class="bg-surface-container-highest px-3 py-1.5 rounded rotate-1 shadow-sm border border-outline-variant/20">
+                            <p class="font-label text-primary font-bold">$420</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section with Pull Quote -->
+        <section class="bg-surface-container-low py-32 overflow-hidden border-y border-outline-variant/10">
+            <div class="max-w-screen-xl mx-auto px-12">
+                <div class="grid grid-cols-12 gap-16 items-center">
+                    <div class="col-span-12 lg:col-span-6">
+                        <blockquote class="font-headline text-5xl md:text-6xl text-primary-container leading-tight italic relative">
+                            <span class="absolute -top-12 -left-8 text-9xl opacity-10 font-serif">“</span>
+                            The loom is a silent witness to time, where every thread holds a whisper of the hands that guided it into being.
+                        </blockquote>
+                        <div class="mt-12 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden grayscale">
+                                <img class="w-full h-full object-cover" data-alt="portrait of a female textile artist in a linen apron with thoughtful expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeHI_4a8KMjv1wlhCjzT5ccue1zNkxWMa0ZKi_TnhX4uLvN_QzpGA7BlZim8ZQp8A9DEiPx3--AUQdstMInEAJDSDFmhknaSWVrXP0cUoAivYV3elNumInfGIUyH2mgGxCIZQpmwgKc7jrsNbecuBWvrj5_Wx2Q_FSKesxe6x42oUcH5PgZq2rLDsRp08zJ22S5U_OYpUWkcnppvVlRKsFPA4vkj8GbdPoBU5TNkErv3oTZ7z2ByQ2ajd6o-xMsOkuk-3Dx1AemoJa"/>
+                            </div>
+                            <div>
+                                <p class="font-label text-on-surface font-bold uppercase tracking-widest text-xs">Elena Vance</p>
+                                <p class="font-body italic text-sm text-on-surface-variant">Master Weaver & Founder</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img class="rounded-lg shadow-lg aspect-square object-cover" data-alt="detailed close-up of a wooden loom with cream threads tightly stretched and organized" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhrYQGJ4iC3_OIKs1VNj-74YeVJ6pxdz-kZz0aGKhZw_elZx0EDmKDFWLW0Me96CTBA5HWzY808CotXgApIMIIs1LtVNIojVBdYuthyIXFDLT7qDsuqtuo61qL5natm8KEfKAWzUAL0eAXwsv-dKe5sl8DdxaZkpDQQHfrclAauv6ddmeWnLeuMVdKmXyv3bCGATaQqLiG4FMbjzZgrLOFtmKAhvb7joVsLo9dbB_F9EHn6B09AR-dkZO10aCSK-0siE7JtI9hzXUc"/>
+                            <img class="rounded-lg shadow-lg aspect-[3/4] object-cover" data-alt="hands working with natural dyed yarns in various shades of brown and ochre" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADNZMXMTu0VOuCUheQ7yW9SXRVofPhBzBzA7TFeaOfkqN5cTrbvKm4eFqEi85mYTm2T5vTs8ADzo80XlP6Fsfv87lwx0WaWzJAPbxf7JP6sw2mj5mv7-aUmrGUzjr4S1GBih5cNmx0JyTc0KRyM6P0NvyW04FPFU7Mh8wlvEGWbLLpwNRptQbOUR_Ju1oli26UPRe7KigHTRPCPL29fPQg5WdNegQL8pkSLX386lOSIw_6Sx3cRRQBeYw74OTQPj9tV8kaVeDs0Eh1"/>
+                        </div>
+                        <div class="space-y-4 pt-12">
+                            <img class="rounded-lg shadow-lg aspect-[3/4] object-cover" data-alt="rustic weaving studio with natural light and wood accents and skeins of yarn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW-p3e3gZyjFfFbvdp2-E0rkRODvdsglTkETcuNAAUSabQtfmh4Rb0dQtkpf_Pjg5tdz8nLz681u6rXncB8cKv0mGUwepdZg9civ7WEYGw5vUbJdUwRILAGaWZ5i5OCcN-9G7aVonp-wxbBV-6tZGDyh8ocM9CfprGEGL5t6qGRW9a4Ww7yAcXBBjJ2FPiHLnk_Uq0jJekO4d1ZNy1PSJcw84ETQvjjKDbG8VCc40bstZ9ZWHJGCb_FRm5BXyPsfP58PYt3vuVMHC-"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey of a Stitch -->
+        <section class="max-w-screen-2xl mx-auto px-12 py-40">
+            <div class="text-center mb-24">
+                <h2 class="font-headline text-5xl text-on-surface mb-4">Journey of a Stitch</h2>
+                <div class="w-24 h-px bg-outline mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
+                <div class="space-y-6">
+                    <div class="w-20 h-20 bg-surface-container-high rounded-full mx-auto flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-4xl" data-icon="eco">eco</span>
+                    </div>
+                    <h4 class="font-headline text-xl">1. Ethical Harvest</h4>
+                    <p class="text-on-surface-variant text-sm font-body leading-relaxed">Sourcing only organic fibers that respect the land they grew in.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="w-20 h-20 bg-surface-container-high rounded-full mx-auto flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-4xl" data-icon="palette">palette</span>
+                    </div>
+                    <h4 class="font-headline text-xl">2. Botanical Dye</h4>
+                    <p class="text-on-surface-variant text-sm font-body leading-relaxed">Pigments derived from petals, roots, and minerals in small batches.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="w-20 h-20 bg-surface-container-high rounded-full mx-auto flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-4xl" data-icon="gesture">gesture</span>
+                    </div>
+                    <h4 class="font-headline text-xl">3. Slow Weave</h4>
+                    <p class="text-on-surface-variant text-sm font-body leading-relaxed">Rhythmic motion of the loom, ensuring precision in every crossing.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="w-20 h-20 bg-surface-container-high rounded-full mx-auto flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-4xl" data-icon="auto_awesome">auto_awesome</span>
+                    </div>
+                    <h4 class="font-headline text-xl">4. Final Bloom</h4>
+                    <p class="text-on-surface-variant text-sm font-body leading-relaxed">Steamed, inspected, and hand-wrapped for its journey to your home.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Strip -->
+        <section class="max-w-screen-2xl mx-auto px-12 mb-40">
+            <div class="bg-primary-container/5 border border-primary-container/20 rounded-2xl p-12 md:p-20 relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-container/5 rounded-full blur-3xl"></div>
+                <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
+                    <div class="max-w-xl text-center md:text-left">
+                        <h2 class="font-headline text-4xl text-primary mb-4">Join our cozy corner</h2>
+                        <p class="text-on-surface-variant font-body">Receive monthly notes from the studio, exclusive textile releases, and slow-living inspiration.</p>
+                    </div>
+                    <div class="w-full md:w-auto flex flex-col sm:flex-row gap-4">
+                        <input class="bg-surface border border-outline-variant/50 rounded-lg px-6 py-4 w-full md:w-80 font-body text-on-surface-variant focus:ring-2 focus:ring-primary shadow-sm" placeholder="Your email address" type="email"/>
+                        <button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label uppercase tracking-widest text-sm hover:bg-primary-container transition-all shadow-lg shadow-surface-tint/10 whitespace-nowrap">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#2b221f] dark:bg-[#130d0c] w-full pt-20 pb-12 transition-all">
+        <div class="flex flex-col md:flex-row justify-between items-center px-12 w-full gap-8 max-w-screen-2xl mx-auto">
+            <div class="text-lg font-bold text-[#fbf9f5] opacity-90 font-serif tracking-widest uppercase">
+                THE DIGITAL LOOM
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a class="text-[#d8c2ba] opacity-60 hover:opacity-100 hover:text-[#ffffff] transition-all font-serif text-sm tracking-wide" href="#">Sustainability</a>
+                <a class="text-[#d8c2ba] opacity-60 hover:opacity-100 hover:text-[#ffffff] transition-all font-serif text-sm tracking-wide" href="#">Wholesale</a>
+                <a class="text-[#d8c2ba] opacity-60 hover:opacity-100 hover:text-[#ffffff] transition-all font-serif text-sm tracking-wide" href="#">Shipping & Returns</a>
+                <a class="text-[#d8c2ba] opacity-60 hover:opacity-100 hover:text-[#ffffff] transition-all font-serif text-sm tracking-wide" href="#">Privacy</a>
+                <a class="text-[#d8c2ba] opacity-60 hover:opacity-100 hover:text-[#ffffff] transition-all font-serif text-sm tracking-wide" href="#">Terms</a>
+            </div>
+            <div class="text-[#fbf9f5] font-serif text-sm tracking-wide opacity-50">
+                © 2024 THE DIGITAL LOOM. CRAFTED BY HAND.
+            </div>
+        </div>
+        <div class="mt-12 text-center">
+            <div class="flex justify-center gap-6 text-[#d8c2ba] opacity-40">
+                <span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors" data-icon="language">language</span>
+                <span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors" data-icon="share">share</span>
+                <span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors" data-icon="mail">mail</span>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
